@@ -115,16 +115,22 @@ spec:
               widgetData:
                 properties:
                   icon:
+                    description: 'name of the icon to display alongside the label
+                      (font awesome icon name eg: `fa-inbox`)'
                     type: string
                   label:
+                    description: text displayed as the menu item's label
                     type: string
                   order:
                     default: 100
                     description: a weight to be used to sort the items in the menu
                     type: integer
                   path:
+                    description: route path to navigate to when the menu item is clicked
                     type: string
                   resourceRefId:
+                    description: the identifier of the k8s custom resource that should
+                      be represented, usually a widget
                     type: string
                 required:
                 - icon

@@ -115,13 +115,17 @@ spec:
               widgetData:
                 properties:
                   description:
+                    description: supplementary text displayed below or near the title
                     type: string
                   series:
+                    description: data to be visualized in the pie chart
                     properties:
                       data:
+                        description: individual segments of the pie chart
                         items:
                           properties:
                             color:
+                              description: color used to represent the segment
                               enum:
                               - blue
                               - darkBlue
@@ -131,8 +135,10 @@ spec:
                               - green
                               type: string
                             label:
+                              description: label for the segment
                               type: string
                             value:
+                              description: numeric value for the segment
                               type: integer
                           required:
                           - color
@@ -141,12 +147,15 @@ spec:
                           type: object
                         type: array
                       total:
+                        description: sum of all data values, used to calculate segment
+                          sizes
                         type: integer
                     required:
                     - data
                     - total
                     type: object
                   title:
+                    description: title displayed above the chart
                     type: string
                 required:
                 - title

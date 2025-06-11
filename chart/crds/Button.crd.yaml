@@ -227,7 +227,6 @@ spec:
                   type: object
                 type: array
               widgetData:
-                description: the data that will be passed to the widget on the frontend
                 properties:
                   clickActionId:
                     description: the id of the action to be executed when the button
@@ -255,7 +254,7 @@ spec:
                     type: string
                   icon:
                     description: 'the icon of the button (font awesome icon name eg:
-                      ''fa-inbox'')'
+                      `fa-inbox`)'
                     type: string
                   label:
                     description: the label of the button

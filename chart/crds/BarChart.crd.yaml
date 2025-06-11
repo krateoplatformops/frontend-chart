@@ -115,12 +115,16 @@ spec:
               widgetData:
                 properties:
                   data:
+                    description: Array of grouped data entries for the bar chart
                     items:
                       properties:
                         bars:
+                          description: Bars within the group, each representing a
+                            value
                           items:
                             properties:
                               color:
+                                description: Color of the bar
                                 enum:
                                 - blue
                                 - darkBlue
@@ -130,8 +134,10 @@ spec:
                                 - green
                                 type: string
                               percentage:
+                                description: Height of the bar as a percentage (0–100)
                                 type: integer
                               value:
+                                description: Label or identifier for the bar
                                 type: string
                             required:
                             - percentage
@@ -139,6 +145,7 @@ spec:
                             type: object
                           type: array
                         label:
+                          description: Label for the group/category
                           type: string
                       required:
                       - bars

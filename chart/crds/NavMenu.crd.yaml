@@ -115,9 +115,13 @@ spec:
               widgetData:
                 properties:
                   items:
+                    description: list of navigation entries each pointing to a k8s
+                      custom resource
                     items:
                       properties:
                         resourceRefId:
+                          description: the identifier of the k8s custom resource that
+                            should be represented, usually a NavMenuItem
                           type: string
                       required:
                       - resourceRefId

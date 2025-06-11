@@ -115,6 +115,7 @@ spec:
               widgetData:
                 properties:
                   text:
+                    description: the content of the paragraph to be displayed
                     type: string
                 required:
                 - text

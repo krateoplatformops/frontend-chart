@@ -115,19 +115,24 @@ spec:
               widgetData:
                 properties:
                   columns:
+                    description: configuration of the table's columns
                     items:
                       properties:
                         title:
+                          description: column header label
                           type: string
                         valueKey:
+                          description: key used to extract the value from row data
                           type: string
                       type: object
                     type: array
                   data:
+                    description: array of objects representing the table's row data
                     items:
                       type: object
                     type: array
                   pageSize:
+                    description: number of rows displayed per page
                     type: integer
                 required:
                 - columns

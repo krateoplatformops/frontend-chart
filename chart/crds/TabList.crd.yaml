@@ -120,8 +120,11 @@ spec:
                     items:
                       properties:
                         label:
+                          description: text displayed on the tab
                           type: string
                         resourceRefId:
+                          description: the identifier of the k8s custom resource represented
+                            by the tab content
                           type: string
                       required:
                       - resourceRefId

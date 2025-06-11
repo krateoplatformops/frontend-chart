@@ -115,66 +115,102 @@ spec:
               widgetData:
                 properties:
                   data:
+                    description: list of kubernetes resources and their relationships
+                      to render as nodes in the flow chart
                     items:
                       properties:
                         createdAt:
+                          description: timestamp indicating when the resource was
+                            created
                           type: string
                         health:
+                          description: health status of the resource
                           properties:
                             message:
+                              description: optional description of the health state
                               type: string
                             reason:
+                              description: reason explaining the current health status
                               type: string
                             status:
+                              description: short status keyword (e.g. healthy, degraded)
                               type: string
                             type:
+                              description: type or category of health check
                               type: string
                           type: object
                         kind:
+                          description: kubernetes resource type (e.g. Deployment,
+                            Service)
                           type: string
                         name:
+                          description: name of the resource
                           type: string
                         namespace:
+                          description: namespace in which the resource is defined
                           type: string
                         parentRefs:
+                          description: list of parent resources used to define graph
+                            relationships
                           items:
                             properties:
                               createdAt:
+                                description: timestamp indicating when the parent
+                                  resource was created
                                 type: string
                               health:
+                                description: health status of the parent resource
                                 properties:
                                   message:
+                                    description: optional description of the health
+                                      state
                                     type: string
                                   reason:
+                                    description: reason explaining the current health
+                                      status
                                     type: string
                                   status:
+                                    description: short status keyword
                                     type: string
                                   type:
+                                    description: type or category of health check
                                     type: string
                                 type: object
                               kind:
+                                description: resource type of the parent
                                 type: string
                               name:
+                                description: name of the parent resource
                                 type: string
                               namespace:
+                                description: namespace of the parent resource
                                 type: string
                               parentRefs:
+                                description: nested parent references for recursive
+                                  relationships
                                 items:
                                   type: object
                                 type: array
                               resourceVersion:
+                                description: internal version string of the parent
+                                  resource
                                 type: string
                               uid:
+                                description: unique identifier of the parent resource
                                 type: string
                               version:
+                                description: api version of the parent resource
                                 type: string
                             type: object
                           type: array
                         resourceVersion:
+                          description: internal version string of the resource
                           type: string
                         uid:
+                          description: unique identifier of the resource
                           type: string
                         version:
+                          description: api version of the resource
                           type: string
                       required:
                       - createdAt

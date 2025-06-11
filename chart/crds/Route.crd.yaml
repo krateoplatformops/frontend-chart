@@ -115,9 +115,12 @@ spec:
               widgetData:
                 properties:
                   items:
+                    description: list of resources to be rendered within the route
                     items:
                       properties:
                         resourceRefId:
+                          description: the identifier of the k8s custom resource that
+                            should be rendered, usually a widget
                           type: string
                       required:
                       - resourceRefId

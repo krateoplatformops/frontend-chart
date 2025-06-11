@@ -113,11 +113,16 @@ spec:
                   type: object
                 type: array
               widgetData:
+                description: data used to render the chart including lines and axis
+                  labels
                 properties:
                   lines:
+                    description: list of data series to be rendered as individual
+                      lines
                     items:
                       properties:
                         color:
+                          description: color used to render the line
                           enum:
                           - blue
                           - darkBlue
@@ -127,11 +132,14 @@ spec:
                           - green
                           type: string
                         coords:
+                          description: data points that define the line
                           items:
                             properties:
                               xAxis:
+                                description: value on the x axis
                                 type: integer
                               yAxis:
+                                description: value on the y axis
                                 type: integer
                             required:
                             - xAxis
@@ -139,12 +147,15 @@ spec:
                             type: object
                           type: array
                         name:
+                          description: label of the line displayed in the legend
                           type: string
                       type: object
                     type: array
                   xAxisName:
+                    description: label for the x axis
                     type: string
                   yAxisName:
+                    description: label for the y axis
                     type: string
                 required:
                 - lines

@@ -113,13 +113,14 @@ spec:
                   type: object
                 type: array
               widgetData:
-                description: the data that will be passed to the widget on the frontend
                 properties:
                   items:
                     description: the items of the column
                     items:
                       properties:
                         resourceRefId:
+                          description: the identifier of the k8s Custom Resource that
+                            should be represented, usually a widget
                           type: string
                       required:
                       - resourceRefId

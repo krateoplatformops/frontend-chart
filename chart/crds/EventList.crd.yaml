@@ -113,32 +113,45 @@ spec:
                   type: object
                 type: array
               widgetData:
-                description: the data that will be passed to the widget on the frontend
                 properties:
                   events:
+                    description: list of events received from a k8s cluster or server
+                      sent event
                     items:
                       properties:
                         action:
+                          description: action associated with the event, if any
                           type: string
                         count:
+                          description: number of times the event has occurred
                           type: integer
                         eventTime:
+                          description: specific timestamp of the event
                           type: string
                         firstTimestamp:
+                          description: timestamp of the first occurrence of the event
                           type: string
                         icon:
+                          description: 'name of the icon associated with the event
+                            (font awesome icon name eg: `fa-inbox`)'
                           type: string
                         involvedObject:
+                          description: object involved in the event with key details
                           properties:
                             apiVersion:
+                              description: api version of the involved object
                               type: string
                             kind:
+                              description: resource type involved
                               type: string
                             name:
+                              description: name of the involved object
                               type: string
                             namespace:
+                              description: namespace of the involved object
                               type: string
                             uid:
+                              description: unique identifier of the involved object
                               type: string
                           required:
                           - kind
@@ -147,18 +160,26 @@ spec:
                           - uid
                           type: object
                         lastTimestamp:
+                          description: timestamp of the last occurrence of the event
                           type: string
                         message:
+                          description: descriptive message of the event
                           type: string
                         metadata:
+                          description: metadata of the event such as name, namespace,
+                            and uid
                           properties:
                             creationTimestamp:
+                              description: creation date and time of the event
                               type: string
                             name:
+                              description: unique name of the event
                               type: string
                             namespace:
+                              description: namespace the event belongs to
                               type: string
                             uid:
+                              description: unique identifier of the event
                               type: string
                           required:
                           - creationTimestamp
@@ -167,19 +188,28 @@ spec:
                           - uid
                           type: object
                         reason:
+                          description: reason or cause of the event
                           type: string
                         reportingComponent:
+                          description: component that reported the event
                           type: string
                         reportingInstance:
+                          description: instance of the component that reported the
+                            event
                           type: string
                         source:
+                          description: information about the source generating the
+                            event
                           properties:
                             component:
+                              description: component source of the event
                               type: string
                             host:
+                              description: host where the event originated
                               type: string
                           type: object
                         type:
+                          description: type of the event, e.g., normal or warning
                           enum:
                           - Normal
                           - Warning
@@ -194,8 +224,10 @@ spec:
                       type: object
                     type: array
                   sseEndpoint:
+                    description: endpoint url for server sent events connection
                     type: string
                   sseTopic:
+                    description: subscription topic for server sent events
                     type: string
                 required:
                 - events

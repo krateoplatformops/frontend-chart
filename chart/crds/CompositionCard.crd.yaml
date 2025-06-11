@@ -173,35 +173,48 @@ spec:
               widgetData:
                 properties:
                   date:
+                    description: date associated with the composition, typically its
+                      creation time
                     type: string
                   deleteCompositionActionId:
-                    description: the id of the action to be executed when the delete
-                      button is clicked
+                    description: id of the action triggered when the delete button
+                      is clicked
                     type: string
                   description:
+                    description: short text describing the composition's purpose or
+                      status
                     type: string
                   icon:
+                    description: icon displayed on the card
                     properties:
                       color:
+                        description: color of the icon
                         type: string
                       name:
+                        description: 'icon name to display (font awesome icon name
+                          eg: `fa-inbox`)'
                         type: string
                     required:
                     - name
                     type: object
                   navigateToDetailActionId:
-                    description: the id of the action to be executed when the panel
-                      is clicked
+                    description: id of the action triggered when the card is clicked
                     type: string
                   status:
+                    description: current status of the composition (e.g., running,
+                      failed, pending)
                     type: string
                   tags:
+                    description: list of tags for categorizing or filtering the composition
                     items:
                       type: string
                     type: array
                   title:
+                    description: main title of the card, usually the name of the composition
                     type: string
                   tooltip:
+                    description: optional tooltip text shown on the top right side
+                      of the card to provide additional context
                     type: string
                 type: object
               widgetDataTemplate:

@@ -115,6 +115,7 @@ spec:
               widgetData:
                 properties:
                   json:
+                    description: json string to be converted and displayed as yaml
                     type: string
                 required:
                 - json
