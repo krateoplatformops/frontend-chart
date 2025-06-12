@@ -1,0 +1,245 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.16.1
+  name: flowcharts.widgets.templates.krateo.io
+spec:
+  group: widgets.templates.krateo.io
+  names:
+    categories:
+    - widgets
+    - krateo
+    kind: FlowChart
+    listKind: FlowChartList
+    plural: flowcharts
+    singular: flowchart
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    - jsonPath: .status.conditions[?(@.type=='Ready')].status
+      name: READY
+      type: string
+    name: v1beta1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          spec:
+            properties:
+              apiRef:
+                properties:
+                  name:
+                    type: string
+                  namespace:
+                    type: string
+                required:
+                - name
+                - namespace
+                type: object
+              resourcesRefs:
+                items:
+                  properties:
+                    apiVersion:
+                      type: string
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    namespace:
+                      type: string
+                    payload:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+                    resource:
+                      type: string
+                    verb:
+                      enum:
+                      - POST
+                      - PUT
+                      - DELETE
+                      - GET
+                      type: string
+                  required:
+                  - id
+                  type: object
+                type: array
+              resourcesRefsTemplate:
+                items:
+                  properties:
+                    iterator:
+                      type: string
+                    template:
+                      properties:
+                        apiVersion:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        namespace:
+                          type: string
+                        payload:
+                          type: object
+                          x-kubernetes-preserve-unknown-fields: true
+                        resource:
+                          type: string
+                        verb:
+                          enum:
+                          - POST
+                          - PUT
+                          - DELETE
+                          - GET
+                          type: string
+                      type: object
+                  type: object
+                type: array
+              widgetData:
+                properties:
+                  data:
+                    description: list of kubernetes resources and their relationships
+                      to render as nodes in the flow chart
+                    items:
+                      properties:
+                        createdAt:
+                          description: timestamp indicating when the resource was
+                            created
+                          type: string
+                        health:
+                          description: health status of the resource
+                          properties:
+                            message:
+                              description: optional description of the health state
+                              type: string
+                            reason:
+                              description: reason explaining the current health status
+                              type: string
+                            status:
+                              description: short status keyword (e.g. healthy, degraded)
+                              type: string
+                            type:
+                              description: type or category of health check
+                              type: string
+                          type: object
+                        kind:
+                          description: kubernetes resource type (e.g. Deployment,
+                            Service)
+                          type: string
+                        name:
+                          description: name of the resource
+                          type: string
+                        namespace:
+                          description: namespace in which the resource is defined
+                          type: string
+                        parentRefs:
+                          description: list of parent resources used to define graph
+                            relationships
+                          items:
+                            properties:
+                              createdAt:
+                                description: timestamp indicating when the parent
+                                  resource was created
+                                type: string
+                              health:
+                                description: health status of the parent resource
+                                properties:
+                                  message:
+                                    description: optional description of the health
+                                      state
+                                    type: string
+                                  reason:
+                                    description: reason explaining the current health
+                                      status
+                                    type: string
+                                  status:
+                                    description: short status keyword
+                                    type: string
+                                  type:
+                                    description: type or category of health check
+                                    type: string
+                                type: object
+                              kind:
+                                description: resource type of the parent
+                                type: string
+                              name:
+                                description: name of the parent resource
+                                type: string
+                              namespace:
+                                description: namespace of the parent resource
+                                type: string
+                              parentRefs:
+                                description: nested parent references for recursive
+                                  relationships
+                                items:
+                                  type: object
+                                type: array
+                              resourceVersion:
+                                description: internal version string of the parent
+                                  resource
+                                type: string
+                              uid:
+                                description: unique identifier of the parent resource
+                                type: string
+                              version:
+                                description: api version of the parent resource
+                                type: string
+                            type: object
+                          type: array
+                        resourceVersion:
+                          description: internal version string of the resource
+                          type: string
+                        uid:
+                          description: unique identifier of the resource
+                          type: string
+                        version:
+                          description: api version of the resource
+                          type: string
+                      required:
+                      - createdAt
+                      - kind
+                      - name
+                      - namespace
+                      - resourceVersion
+                      - uid
+                      - version
+                      type: object
+                    type: array
+                type: object
+              widgetDataTemplate:
+                items:
+                  properties:
+                    expression:
+                      type: string
+                    forPath:
+                      type: string
+                  type: object
+                type: array
+            required:
+            - widgetData
+            type: object
+          status:
+            type: object
+            x-kubernetes-preserve-unknown-fields: true
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
