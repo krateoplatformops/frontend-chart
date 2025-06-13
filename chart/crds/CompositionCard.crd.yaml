@@ -76,6 +76,59 @@ spec:
                       - type
                       type: object
                     type: array
+                  openDrawer:
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        loading:
+                          enum:
+                          - global
+                          - inline
+                          - none
+                          type: string
+                        requireConfirmation:
+                          type: boolean
+                        resourceRefId:
+                          type: string
+                        type:
+                          enum:
+                          - openDrawer
+                          type: string
+                      required:
+                      - id
+                      - resourceRefId
+                      - type
+                      type: object
+                    type: array
+                  openModal:
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        loading:
+                          enum:
+                          - global
+                          - inline
+                          - none
+                          type: string
+                        name:
+                          type: string
+                        requireConfirmation:
+                          type: boolean
+                        resourceRefId:
+                          type: string
+                        type:
+                          enum:
+                          - openModal
+                          type: string
+                      required:
+                      - id
+                      - name
+                      - resourceRefId
+                      - type
+                      type: object
+                    type: array
                   rest:
                     items:
                       properties:
