@@ -4,17 +4,17 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.16.1
-  name: formtests.widgets.templates.krateo.io
+  name: forms.widgets.templates.krateo.io
 spec:
   group: widgets.templates.krateo.io
   names:
     categories:
     - widgets
     - krateo
-    kind: FormTest
-    listKind: FormTestList
-    plural: formtests
-    singular: formtest
+    kind: Form
+    listKind: FormList
+    plural: forms
+    singular: form
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
@@ -240,6 +240,12 @@ spec:
               widgetData:
                 description: the data that will be passed to the widget on the frontend
                 properties:
+                  fieldDescription:
+                    default: inline
+                    enum:
+                    - tooltip
+                    - inline
+                    type: string
                   schema:
                     description: the schema of the form as an object
                     type: object
