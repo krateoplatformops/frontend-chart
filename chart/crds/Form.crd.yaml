@@ -139,11 +139,29 @@ spec:
                           - inline
                           - none
                           type: string
+                        onEventNavigateTo:
+                          properties:
+                            eventReason:
+                              type: string
+                            timeout:
+                              default: 50
+                              description: the timeout in seconds to wait for the
+                                event
+                              type: integer
+                            url:
+                              type: string
+                          required:
+                          - eventReason
+                          - url
+                          type: object
                         onSuccessNavigateTo:
                           type: string
                         payload:
                           type: object
                           x-kubernetes-preserve-unknown-fields: true
+                        payloadKey:
+                          description: the key to nest the payload to
+                          type: string
                         payloadToOverride:
                           items:
                             properties:
@@ -166,6 +184,7 @@ spec:
                           type: string
                       required:
                       - id
+                      - payloadKey
                       - resourceRefId
                       type: object
                     type: array
