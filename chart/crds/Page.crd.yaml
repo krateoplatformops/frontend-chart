@@ -4,17 +4,17 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.16.1
-  name: resourceroutes.widgets.templates.krateo.io
+  name: pages.widgets.templates.krateo.io
 spec:
   group: widgets.templates.krateo.io
   names:
     categories:
     - widgets
     - krateo
-    kind: ResourceRoute
-    listKind: ResourceRouteList
-    plural: resourceroutes
-    singular: resourceroute
+    kind: Page
+    listKind: PageList
+    plural: pages
+    singular: page
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
@@ -114,16 +114,23 @@ spec:
                 type: array
               widgetData:
                 properties:
-                  path:
-                    description: the url path to that loads the resource
-                    type: string
-                  resourceRefId:
-                    description: the identifier of the k8s custom resource that should
-                      be rendered, usually a widget
+                  items:
+                    description: list of resources to be rendered within the route
+                    items:
+                      properties:
+                        resourceRefId:
+                          description: the identifier of the k8s custom resource that
+                            should be rendered, usually a widget
+                          type: string
+                      required:
+                      - resourceRefId
+                      type: object
+                    type: array
+                  title:
+                    description: title of the page shown in the browser tab
                     type: string
                 required:
-                - path
-                - resourceRefId
+                - items
                 type: object
               widgetDataTemplate:
                 items:
