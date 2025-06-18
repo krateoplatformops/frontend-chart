@@ -155,6 +155,7 @@ spec:
                     description: number of rows displayed per page
                     type: integer
                   prefix:
+                    description: it's the filters prefix to get right values
                     type: string
                 required:
                 - columns

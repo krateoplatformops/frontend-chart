@@ -4,17 +4,17 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.16.1
-  name: resourcesrouters.widgets.templates.krateo.io
+  name: routesloaders.widgets.templates.krateo.io
 spec:
   group: widgets.templates.krateo.io
   names:
     categories:
     - widgets
     - krateo
-    kind: ResourcesRouter
-    listKind: ResourcesRouterList
-    plural: resourcesrouters
-    singular: resourcesrouter
+    kind: RoutesLoader
+    listKind: RoutesLoaderList
+    plural: routesloaders
+    singular: routesloader
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
@@ -113,21 +113,6 @@ spec:
                   type: object
                 type: array
               widgetData:
-                properties:
-                  items:
-                    description: list of resources to be rendered within the route
-                    items:
-                      properties:
-                        resourceRefId:
-                          description: the identifier of the k8s custom resource that
-                            should be rendered, usually a widget
-                          type: string
-                      required:
-                      - resourceRefId
-                      type: object
-                    type: array
-                required:
-                - items
                 type: object
               widgetDataTemplate:
                 items:

@@ -114,20 +114,16 @@ spec:
                 type: array
               widgetData:
                 properties:
-                  items:
-                    description: list of resources to be rendered within the route
-                    items:
-                      properties:
-                        resourceRefId:
-                          description: the identifier of the k8s custom resource that
-                            should be rendered, usually a widget
-                          type: string
-                      required:
-                      - resourceRefId
-                      type: object
-                    type: array
+                  path:
+                    description: the url path to that loads the resource
+                    type: string
+                  resourceRefId:
+                    description: the id matching the resource in the resourcesRefs
+                      array, must of kind page
+                    type: string
                 required:
-                - items
+                - path
+                - resourceRefId
                 type: object
               widgetDataTemplate:
                 items:

@@ -115,6 +115,7 @@ spec:
               widgetData:
                 properties:
                   asGrid:
+                    description: to show children as list or grid
                     type: boolean
                   items:
                     items:
@@ -126,6 +127,7 @@ spec:
                       type: object
                     type: array
                   prefix:
+                    description: it's the filters prefix to get right values
                     type: string
                 required:
                 - items

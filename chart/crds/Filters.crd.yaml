@@ -118,16 +118,24 @@ spec:
                     items:
                       properties:
                         description:
+                          description: text to show as tooltip
                           type: string
                         label:
+                          description: the label of the field
                           type: string
                         name:
+                          description: the name of the field, it must to be identical
+                            to widget prop name to filter
                           type: string
                         options:
+                          description: they're the options for select or radio, the
+                            type must be 'string'
                           items:
                             type: string
                           type: array
                         type:
+                          description: it's the filter type, to render input, select,
+                            radio buttons, date picker or daterange picker
                           enum:
                           - string
                           - boolean
@@ -142,6 +150,7 @@ spec:
                       type: object
                     type: array
                   prefix:
+                    description: the prefix to share filters values to other widgets
                     type: string
                 required:
                 - fields
