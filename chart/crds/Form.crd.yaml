@@ -91,6 +91,13 @@ spec:
                           type: boolean
                         resourceRefId:
                           type: string
+                        size:
+                          enum:
+                          - default
+                          - large
+                          type: string
+                        title:
+                          type: string
                         type:
                           enum:
                           - openDrawer
@@ -117,6 +124,8 @@ spec:
                           type: string
                         requireConfirmation:
                           type: boolean
+                        title:
+                          type: string
                         type:
                           enum:
                           - openModal

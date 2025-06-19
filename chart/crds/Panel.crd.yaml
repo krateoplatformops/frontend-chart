@@ -91,6 +91,13 @@ spec:
                           type: boolean
                         resourceRefId:
                           type: string
+                        size:
+                          enum:
+                          - default
+                          - large
+                          type: string
+                        title:
+                          type: string
                         type:
                           enum:
                           - openDrawer
@@ -117,6 +124,8 @@ spec:
                         requireConfirmation:
                           type: boolean
                         resourceRefId:
+                          type: string
+                        title:
                           type: string
                         type:
                           enum:
@@ -254,8 +263,6 @@ spec:
                         items:
                           type: string
                         type: array
-                    required:
-                    - items
                     type: object
                   icon:
                     description: icon displayed in the panel header
