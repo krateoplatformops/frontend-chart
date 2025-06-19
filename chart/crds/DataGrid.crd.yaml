@@ -117,6 +117,36 @@ spec:
                   asGrid:
                     description: to show children as list or grid
                     type: boolean
+                  grid:
+                    description: 'The grid type of list. You can set grid to something
+                      like {gutter: 16, column: 4} or specify the integer for columns
+                      based on their size, e.g. sm, md, etc. to make it responsive.'
+                    properties:
+                      column:
+                        description: The column of grid
+                        type: integer
+                      gutter:
+                        description: The spacing between grid
+                        type: integer
+                      lg:
+                        description: ≥992px column of grid
+                        type: integer
+                      md:
+                        description: ≥768px column of grid
+                        type: integer
+                      sm:
+                        description: ≥576px column of grid
+                        type: integer
+                      xl:
+                        description: ≥1200px column of grid
+                        type: integer
+                      xs:
+                        description: <576px column of grid
+                        type: integer
+                      xxl:
+                        description: ≥1600px column of grid
+                        type: integer
+                    type: object
                   items:
                     items:
                       properties:
