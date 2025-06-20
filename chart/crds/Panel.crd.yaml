@@ -264,6 +264,14 @@ spec:
                           type: string
                         type: array
                     type: object
+                  headerLeft:
+                    description: optional text to be displayed under the title, on
+                      the left side of the Panel
+                    type: string
+                  headerRight:
+                    description: optional text to be displayed under the title, on
+                      the right side of the Panel
+                    type: string
                   icon:
                     description: icon displayed in the panel header
                     properties:
