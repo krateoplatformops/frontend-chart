@@ -140,7 +140,7 @@ spec:
                                 type: string
                               yAxis:
                                 description: value on the y axis
-                                type: integer
+                                type: string
                             required:
                             - xAxis
                             - yAxis
