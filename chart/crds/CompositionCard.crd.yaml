@@ -45,126 +45,6 @@ spec:
             type: string
           spec:
             properties:
-              actions:
-                description: the actions of the panel
-                properties:
-                  navigate:
-                    items:
-                      properties:
-                        id:
-                          type: string
-                        loading:
-                          enum:
-                          - global
-                          - inline
-                          - none
-                          type: string
-                        name:
-                          type: string
-                        requireConfirmation:
-                          type: boolean
-                        resourceRefId:
-                          type: string
-                        type:
-                          enum:
-                          - navigate
-                          type: string
-                      required:
-                      - id
-                      - name
-                      - resourceRefId
-                      - type
-                      type: object
-                    type: array
-                  openDrawer:
-                    items:
-                      properties:
-                        id:
-                          type: string
-                        loading:
-                          enum:
-                          - global
-                          - inline
-                          - none
-                          type: string
-                        requireConfirmation:
-                          type: boolean
-                        resourceRefId:
-                          type: string
-                        size:
-                          enum:
-                          - default
-                          - large
-                          type: string
-                        title:
-                          type: string
-                        type:
-                          enum:
-                          - openDrawer
-                          type: string
-                      required:
-                      - id
-                      - resourceRefId
-                      - type
-                      type: object
-                    type: array
-                  openModal:
-                    items:
-                      properties:
-                        id:
-                          type: string
-                        loading:
-                          enum:
-                          - global
-                          - inline
-                          - none
-                          type: string
-                        name:
-                          type: string
-                        requireConfirmation:
-                          type: boolean
-                        resourceRefId:
-                          type: string
-                        title:
-                          type: string
-                        type:
-                          enum:
-                          - openModal
-                          type: string
-                      required:
-                      - id
-                      - name
-                      - resourceRefId
-                      - type
-                      type: object
-                    type: array
-                  rest:
-                    items:
-                      properties:
-                        id:
-                          type: string
-                        loading:
-                          enum:
-                          - global
-                          - inline
-                          - none
-                          type: string
-                        onSuccessNavigateTo:
-                          type: string
-                        requireConfirmation:
-                          type: boolean
-                        resourceRefId:
-                          type: string
-                        type:
-                          enum:
-                          - rest
-                          type: string
-                      required:
-                      - id
-                      - resourceRefId
-                      type: object
-                    type: array
-                type: object
               apiRef:
                 properties:
                   name:
@@ -234,6 +114,211 @@ spec:
                 type: array
               widgetData:
                 properties:
+                  actions:
+                    description: the actions of the widget
+                    properties:
+                      navigate:
+                        description: client-side navigation actions
+                        items:
+                          properties:
+                            id:
+                              description: unique identifier for the action
+                              type: string
+                            loading:
+                              description: defines the loading indicator behavior
+                                during navigation
+                              enum:
+                              - global
+                              - inline
+                              - none
+                              type: string
+                            name:
+                              description: name of the navigation action
+                              type: string
+                            requireConfirmation:
+                              description: whether user confirmation is required before
+                                navigating
+                              type: boolean
+                            resourceRefId:
+                              description: the identifier of the k8s custom resource
+                                that should be represented
+                              type: string
+                            type:
+                              description: type of navigation action
+                              enum:
+                              - navigate
+                              type: string
+                          required:
+                          - id
+                          - name
+                          - resourceRefId
+                          - type
+                          type: object
+                        type: array
+                      openDrawer:
+                        description: actions to open side drawer components
+                        items:
+                          properties:
+                            id:
+                              description: unique identifier for the drawer action
+                              type: string
+                            loading:
+                              description: defines the loading indicator behavior
+                                for the drawer
+                              enum:
+                              - global
+                              - inline
+                              - none
+                              type: string
+                            requireConfirmation:
+                              description: whether user confirmation is required before
+                                opening
+                              type: boolean
+                            resourceRefId:
+                              description: the identifier of the k8s custom resource
+                                that should be represented
+                              type: string
+                            size:
+                              description: drawer size to be displayed
+                              enum:
+                              - default
+                              - large
+                              type: string
+                            title:
+                              description: title shown in the drawer header
+                              type: string
+                            type:
+                              description: type of drawer action
+                              enum:
+                              - openDrawer
+                              type: string
+                          required:
+                          - id
+                          - resourceRefId
+                          - type
+                          type: object
+                        type: array
+                      openModal:
+                        description: actions to open modal dialog components
+                        items:
+                          properties:
+                            id:
+                              description: unique identifier for the modal action
+                              type: string
+                            loading:
+                              description: defines the loading indicator behavior
+                                for the modal
+                              enum:
+                              - global
+                              - inline
+                              - none
+                              type: string
+                            name:
+                              description: name of the modal action
+                              type: string
+                            requireConfirmation:
+                              description: whether user confirmation is required before
+                                opening
+                              type: boolean
+                            resourceRefId:
+                              description: the identifier of the k8s custom resource
+                                that should be represented
+                              type: string
+                            title:
+                              description: title shown in the modal header
+                              type: string
+                            type:
+                              description: type of modal action
+                              enum:
+                              - openModal
+                              type: string
+                          required:
+                          - id
+                          - name
+                          - resourceRefId
+                          - type
+                          type: object
+                        type: array
+                      rest:
+                        description: rest api call actions triggered by the widget
+                        items:
+                          properties:
+                            id:
+                              description: unique identifier for the action
+                              type: string
+                            loading:
+                              description: defines the loading indicator behavior
+                                for the action
+                              enum:
+                              - global
+                              - inline
+                              - none
+                              type: string
+                            onEventNavigateTo:
+                              description: conditional navigation triggered by a specific
+                                event
+                              properties:
+                                eventReason:
+                                  description: identifier of the awaited event reason
+                                  type: string
+                                timeout:
+                                  default: 50
+                                  description: the timeout in seconds to wait for
+                                    the event
+                                  type: integer
+                                url:
+                                  description: url to navigate to when the event is
+                                    received
+                                  type: string
+                              required:
+                              - eventReason
+                              - url
+                              type: object
+                            onSuccessNavigateTo:
+                              description: url to navigate to after successful execution
+                              type: string
+                            payload:
+                              description: static payload sent with the request
+                              type: object
+                              x-kubernetes-preserve-unknown-fields: true
+                            payloadKey:
+                              description: key used to nest the payload in the request
+                                body
+                              type: string
+                            payloadToOverride:
+                              description: list of payload fields to override dynamically
+                              items:
+                                properties:
+                                  name:
+                                    description: name of the field to override
+                                    type: string
+                                  value:
+                                    description: value to use for overriding the field
+                                    type: string
+                                required:
+                                - name
+                                - value
+                                type: object
+                              type: array
+                            requireConfirmation:
+                              description: whether user confirmation is required before
+                                triggering the action
+                              type: boolean
+                            resourceRefId:
+                              description: the identifier of the k8s custom resource
+                                that should be represented
+                              type: string
+                            type:
+                              description: type of action to execute
+                              enum:
+                              - rest
+                              type: string
+                          required:
+                          - id
+                          - resourceRefId
+                          type: object
+                        type: array
+                    type: object
                   date:
                     description: date associated with the composition, typically its
                       creation time
@@ -278,6 +363,8 @@ spec:
                     description: optional tooltip text shown on the top right side
                       of the card to provide additional context
                     type: string
+                required:
+                - actions
                 type: object
               widgetDataTemplate:
                 items:
@@ -289,7 +376,6 @@ spec:
                   type: object
                 type: array
             required:
-            - actions
             - resourcesRefs
             - widgetData
             type: object
