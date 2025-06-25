@@ -115,6 +115,7 @@ spec:
               widgetData:
                 properties:
                   fields:
+                    description: it defines the filters as fields of a Form
                     items:
                       properties:
                         description:
@@ -124,9 +125,12 @@ spec:
                           description: the label of the field
                           type: string
                         name:
-                          description: the name of the field, it must to be identical
-                            to widget prop name to filter
-                          type: string
+                          description: the name of the filter field, it must to be
+                            identical to the widget prop name to filter or data in
+                            dataset
+                          items:
+                            type: string
+                          type: array
                         options:
                           description: they're the options for select or radio, the
                             type must be 'string'
@@ -134,8 +138,8 @@ spec:
                             type: string
                           type: array
                         type:
-                          description: it's the filter type, to render input, select,
-                            radio buttons, date picker or daterange picker
+                          description: it's the filter field type, to render input,
+                            select, radio buttons, date picker or daterange picker
                           enum:
                           - string
                           - boolean

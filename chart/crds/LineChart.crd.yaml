@@ -137,10 +137,10 @@ spec:
                             properties:
                               xAxis:
                                 description: value on the x axis
-                                type: integer
+                                type: string
                               yAxis:
                                 description: value on the y axis
-                                type: integer
+                                type: string
                             required:
                             - xAxis
                             - yAxis
@@ -151,6 +151,9 @@ spec:
                           type: string
                       type: object
                     type: array
+                  prefix:
+                    description: it's the filters prefix to get right values
+                    type: string
                   xAxisName:
                     description: label for the x axis
                     type: string
