@@ -75,6 +75,7 @@ spec:
                       enum:
                       - POST
                       - PUT
+                      - PATCH
                       - DELETE
                       - GET
                       type: string
@@ -106,6 +107,7 @@ spec:
                           enum:
                           - POST
                           - PUT
+                          - PATCH
                           - DELETE
                           - GET
                           type: string
