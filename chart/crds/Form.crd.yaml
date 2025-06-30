@@ -246,6 +246,10 @@ spec:
                         description: rest api call actions triggered by the widget
                         items:
                           properties:
+                            errorMessage:
+                              description: a message that will be displayed inside
+                                a toast in case of error
+                              type: string
                             id:
                               description: unique identifier for the action
                               type: string
@@ -310,6 +314,10 @@ spec:
                             resourceRefId:
                               description: the identifier of the k8s custom resource
                                 that should be represented
+                              type: string
+                            successMessage:
+                              description: a message that will be displayed inside
+                                a toast in case of success
                               type: string
                             type:
                               description: type of action to execute
