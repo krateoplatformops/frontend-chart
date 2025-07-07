@@ -249,6 +249,10 @@ spec:
                               description: a message that will be displayed inside
                                 a toast in case of error
                               type: string
+                            headers:
+                              items:
+                                type: string
+                              type: array
                             id:
                               description: unique identifier for the action
                               type: string
