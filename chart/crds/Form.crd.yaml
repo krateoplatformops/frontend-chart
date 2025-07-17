@@ -127,17 +127,6 @@ spec:
                             id:
                               description: unique identifier for the action
                               type: string
-                            loading:
-                              description: defines the loading indicator behavior
-                                during navigation
-                              enum:
-                              - global
-                              - inline
-                              - none
-                              type: string
-                            name:
-                              description: name of the navigation action
-                              type: string
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 navigating
@@ -153,7 +142,6 @@ spec:
                               type: string
                           required:
                           - id
-                          - name
                           - resourceRefId
                           - type
                           type: object
@@ -164,14 +152,6 @@ spec:
                           properties:
                             id:
                               description: unique identifier for the drawer action
-                              type: string
-                            loading:
-                              description: defines the loading indicator behavior
-                                for the drawer
-                              enum:
-                              - global
-                              - inline
-                              - none
                               type: string
                             requireConfirmation:
                               description: whether user confirmation is required before
@@ -208,17 +188,6 @@ spec:
                             id:
                               description: unique identifier for the modal action
                               type: string
-                            loading:
-                              description: defines the loading indicator behavior
-                                for the modal
-                              enum:
-                              - global
-                              - inline
-                              - none
-                              type: string
-                            name:
-                              description: name of the modal action
-                              type: string
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -237,7 +206,6 @@ spec:
                               type: string
                           required:
                           - id
-                          - name
                           - resourceRefId
                           - type
                           type: object
@@ -256,14 +224,6 @@ spec:
                               type: array
                             id:
                               description: unique identifier for the action
-                              type: string
-                            loading:
-                              description: defines the loading indicator behavior
-                                for the action
-                              enum:
-                              - global
-                              - inline
-                              - none
                               type: string
                             onEventNavigateTo:
                               description: conditional navigation triggered by a specific
@@ -331,9 +291,37 @@ spec:
                           required:
                           - id
                           - resourceRefId
+                          - type
                           type: object
                         type: array
                     type: object
+                  autocomplete:
+                    description: autocomplete configuration for the form fields
+                    items:
+                      properties:
+                        fetch:
+                          properties:
+                            url:
+                              description: the URL to fetch autocomplete options from
+                              type: string
+                            verb:
+                              description: HTTP method to use for fetching options
+                              enum:
+                              - GET
+                              - POST
+                              type: string
+                          required:
+                          - url
+                          - verb
+                          type: object
+                        path:
+                          description: the path of the field to apply autocomplete
+                          type: string
+                      required:
+                      - fetch
+                      - path
+                      type: object
+                    type: array
                   fieldDescription:
                     default: inline
                     enum:
