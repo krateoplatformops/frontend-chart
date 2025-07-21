@@ -126,6 +126,13 @@ spec:
                             id:
                               description: unique identifier for the action
                               type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 navigating
@@ -152,6 +159,13 @@ spec:
                             id:
                               description: unique identifier for the drawer action
                               type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -187,6 +201,13 @@ spec:
                             id:
                               description: unique identifier for the modal action
                               type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -224,6 +245,13 @@ spec:
                             id:
                               description: unique identifier for the action
                               type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
                             onEventNavigateTo:
                               description: conditional navigation triggered by a specific
                                 event

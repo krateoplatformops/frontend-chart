@@ -127,6 +127,13 @@ spec:
                             id:
                               description: unique identifier for the action
                               type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 navigating
@@ -153,6 +160,13 @@ spec:
                             id:
                               description: unique identifier for the drawer action
                               type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -188,6 +202,13 @@ spec:
                             id:
                               description: unique identifier for the modal action
                               type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -225,6 +246,13 @@ spec:
                             id:
                               description: unique identifier for the action
                               type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
                             onEventNavigateTo:
                               description: conditional navigation triggered by a specific
                                 event
@@ -300,6 +328,7 @@ spec:
                     items:
                       properties:
                         fetch:
+                          description: remote data source configuration for autocomplete
                           properties:
                             url:
                               description: the URL to fetch autocomplete options from
@@ -322,6 +351,30 @@ spec:
                       - path
                       type: object
                     type: array
+                  buttonConfig:
+                    description: custom labels and icons for form buttons
+                    properties:
+                      primary:
+                        description: primary button configuration
+                        properties:
+                          icon:
+                            description: icon name for primary button
+                            type: string
+                          label:
+                            description: text label for primary button
+                            type: string
+                        type: object
+                      secondary:
+                        description: secondary button configuration
+                        properties:
+                          icon:
+                            description: icon name for secondary button
+                            type: string
+                          label:
+                            description: text label for secondary button
+                            type: string
+                        type: object
+                    type: object
                   fieldDescription:
                     default: inline
                     enum:
