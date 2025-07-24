@@ -375,6 +375,47 @@ spec:
                             type: string
                         type: object
                     type: object
+                  dependencies:
+                    description: list of dependencies for the form fields
+                    items:
+                      properties:
+                        dependsField:
+                          properties:
+                            field:
+                              description: the field that this field depends on
+                              type: string
+                            when:
+                              description: condition for the dependency to be applied
+                              enum:
+                              - non-empty
+                              - changed
+                              - matchRegex
+                              type: string
+                          type: object
+                        fetch:
+                          properties:
+                            url:
+                              description: the URL to fetch options
+                              type: string
+                            verb:
+                              description: HTTP method to use for fetching options
+                              enum:
+                              - GET
+                              - POST
+                              type: string
+                          required:
+                          - url
+                          - verb
+                          type: object
+                        path:
+                          description: the path of the field
+                          type: string
+                      required:
+                      - dependsField
+                      - fetch
+                      - path
+                      type: object
+                    type: array
                   fieldDescription:
                     default: inline
                     enum:
