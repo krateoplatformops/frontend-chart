@@ -56,33 +56,51 @@ spec:
                 - namespace
                 type: object
               resourcesRefs:
-                items:
-                  properties:
-                    apiVersion:
-                      type: string
-                    id:
-                      type: string
-                    name:
-                      type: string
-                    namespace:
-                      type: string
-                    payload:
+                properties:
+                  _slice_:
+                    properties:
+                      continue:
+                        type: boolean
+                      offset:
+                        type: integer
+                      page:
+                        type: integer
+                      perPage:
+                        type: integer
+                    required:
+                    - page
+                    - perPage
+                    type: object
+                  items:
+                    items:
+                      properties:
+                        apiVersion:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        namespace:
+                          type: string
+                        payload:
+                          type: object
+                        resource:
+                          type: string
+                        verb:
+                          enum:
+                          - POST
+                          - PUT
+                          - PATCH
+                          - DELETE
+                          - GET
+                          type: string
+                      required:
+                      - id
                       type: object
-                      x-kubernetes-preserve-unknown-fields: true
-                    resource:
-                      type: string
-                    verb:
-                      enum:
-                      - POST
-                      - PUT
-                      - PATCH
-                      - DELETE
-                      - GET
-                      type: string
-                  required:
-                  - id
-                  type: object
-                type: array
+                    type: array
+                required:
+                - items
+                type: object
               resourcesRefsTemplate:
                 items:
                   properties:
@@ -145,7 +163,6 @@ spec:
                   type: object
                 type: array
             required:
-            - resourcesRefs
             - widgetData
             type: object
           status:
