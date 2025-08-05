@@ -348,10 +348,6 @@ spec:
                         fetch:
                           description: remote data source configuration for autocomplete
                           properties:
-                            queryParam:
-                              description: The query parameter to be appended to the
-                                base URL to call the API
-                              type: string
                             url:
                               description: the URL to fetch autocomplete options from
                               type: string
@@ -409,10 +405,6 @@ spec:
                           type: object
                         fetch:
                           properties:
-                            queryParam:
-                              description: The query parameter to be appended to the
-                                base URL to call the API
-                              type: string
                             url:
                               description: the URL to fetch options
                               type: string
