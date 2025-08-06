@@ -277,6 +277,8 @@ spec:
                                 eventReason:
                                   description: identifier of the awaited event reason
                                   type: string
+                                reloadRoutes:
+                                  type: boolean
                                 timeout:
                                   default: 50
                                   description: the timeout in seconds to wait for

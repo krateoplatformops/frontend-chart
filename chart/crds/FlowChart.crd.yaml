@@ -143,20 +143,21 @@ spec:
                           description: timestamp indicating when the resource was
                             created
                           type: string
-                        health:
-                          description: health status of the resource
+                        date:
+                          description: optional date value to be shown in the node,
+                            formatted as ISO 8601 string
+                          type: string
+                        icon:
+                          description: custom icon displayed for the resource node
                           properties:
+                            color:
+                              description: CSS color value for the icon background
+                              type: string
                             message:
-                              description: optional description of the health state
+                              description: optional tooltip message displayed on hover
                               type: string
-                            reason:
-                              description: reason explaining the current health status
-                              type: string
-                            status:
-                              description: short status keyword (e.g. healthy, degraded)
-                              type: string
-                            type:
-                              description: type or category of health check
+                            name:
+                              description: FontAwesome icon class name (e.g. 'fa-check')
                               type: string
                           type: object
                         kind:
@@ -178,22 +179,21 @@ spec:
                                 description: timestamp indicating when the parent
                                   resource was created
                                 type: string
-                              health:
-                                description: health status of the parent resource
+                              date:
+                                description: optional date value to be shown in the
+                                  node, formatted as ISO 8601 string
+                                type: string
+                              icon:
+                                description: custom icon for the parent resource
                                 properties:
+                                  color:
+                                    description: CSS color value for the icon background
+                                    type: string
                                   message:
-                                    description: optional description of the health
-                                      state
+                                    description: optional tooltip message
                                     type: string
-                                  reason:
-                                    description: reason explaining the current health
-                                      status
-                                    type: string
-                                  status:
-                                    description: short status keyword
-                                    type: string
-                                  type:
-                                    description: type or category of health check
+                                  name:
+                                    description: FontAwesome icon class name
                                     type: string
                                 type: object
                               kind:
@@ -215,6 +215,20 @@ spec:
                                 description: internal version string of the parent
                                   resource
                                 type: string
+                              statusIcon:
+                                description: custom status icon for the parent resource
+                                properties:
+                                  color:
+                                    description: CSS color value for the status icon
+                                      background
+                                    type: string
+                                  message:
+                                    description: optional tooltip message
+                                    type: string
+                                  name:
+                                    description: FontAwesome icon class name
+                                    type: string
+                                type: object
                               uid:
                                 description: unique identifier of the parent resource
                                 type: string
@@ -226,6 +240,22 @@ spec:
                         resourceVersion:
                           description: internal version string of the resource
                           type: string
+                        statusIcon:
+                          description: custom status icon displayed alongside resource
+                            info
+                          properties:
+                            color:
+                              description: CSS color value for the status icon background
+                              type: string
+                            message:
+                              description: optional tooltip message describing the
+                                status
+                              type: string
+                            name:
+                              description: FontAwesome icon class name representing
+                                status
+                              type: string
+                          type: object
                         uid:
                           description: unique identifier of the resource
                           type: string
@@ -234,6 +264,7 @@ spec:
                           type: string
                       required:
                       - createdAt
+                      - date
                       - kind
                       - name
                       - namespace
