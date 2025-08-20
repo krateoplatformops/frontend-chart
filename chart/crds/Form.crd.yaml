@@ -435,6 +435,21 @@ spec:
                     - tooltip
                     - inline
                     type: string
+                  objectFields:
+                    description: configuration for object fields in the form
+                    items:
+                      properties:
+                        displayField:
+                          description: the field to display in the objects list
+                          type: string
+                        path:
+                          description: the path of the object field
+                          type: string
+                      required:
+                      - displayField
+                      - path
+                      type: object
+                    type: array
                   schema:
                     description: the schema of the form as an object
                     type: object
