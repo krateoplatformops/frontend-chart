@@ -170,6 +170,7 @@ spec:
                     description: array of objects representing the table's row data
                     items:
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                     type: array
                   pageSize:
                     description: number of rows displayed per page
