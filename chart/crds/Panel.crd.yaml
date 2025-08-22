@@ -151,6 +151,10 @@ spec:
                               required:
                               - display
                               type: object
+                            path:
+                              description: the identifier of the route to navigate
+                                to
+                              type: string
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 navigating
@@ -166,7 +170,6 @@ spec:
                               type: string
                           required:
                           - id
-                          - resourceRefId
                           - type
                           type: object
                         type: array
