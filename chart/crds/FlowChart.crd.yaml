@@ -139,10 +139,6 @@ spec:
                       to render as nodes in the flow chart
                     items:
                       properties:
-                        createdAt:
-                          description: timestamp indicating when the resource was
-                            created
-                          type: string
                         date:
                           description: optional date value to be shown in the node,
                             formatted as ISO 8601 string
@@ -175,10 +171,6 @@ spec:
                             relationships
                           items:
                             properties:
-                              createdAt:
-                                description: timestamp indicating when the parent
-                                  resource was created
-                                type: string
                               date:
                                 description: optional date value to be shown in the
                                   node, formatted as ISO 8601 string
@@ -263,7 +255,6 @@ spec:
                           description: api version of the resource
                           type: string
                       required:
-                      - createdAt
                       - date
                       - kind
                       - name
