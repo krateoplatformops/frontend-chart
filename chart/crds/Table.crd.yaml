@@ -149,12 +149,6 @@ spec:
                           - red
                           - green
                           type: string
-                        kind:
-                          description: type of data to be represented
-                          enum:
-                          - value
-                          - icon
-                          type: string
                         title:
                           description: column header label
                           type: string
@@ -167,10 +161,32 @@ spec:
                       type: object
                     type: array
                   data:
-                    description: array of objects representing the table's row data
                     items:
+                      additionalProperties:
+                        properties:
+                          kind:
+                            enum:
+                            - jsonSchemaType
+                            - icon
+                            - widget
+                            type: string
+                          resourceRefId:
+                            type: string
+                          type:
+                            enum:
+                            - string
+                            - number
+                            - integer
+                            - boolean
+                            - array
+                            - "null"
+                            type: string
+                          value:
+                            type: string
+                        required:
+                        - kind
+                        type: object
                       type: object
-                      x-kubernetes-preserve-unknown-fields: true
                     type: array
                   pageSize:
                     description: number of rows displayed per page
