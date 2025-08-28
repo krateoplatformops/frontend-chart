@@ -161,32 +161,56 @@ spec:
                       type: object
                     type: array
                   data:
+                    description: Array of table rows
                     items:
-                      additionalProperties:
+                      items:
                         properties:
+                          arrayValue:
+                            description: value if type = array
+                            items:
+                              type: string
+                            type: array
+                          booleanValue:
+                            description: value if type = boolean
+                            type: boolean
+                          decimalValue:
+                            description: value if type = number or decimal
+                            type: string
                           kind:
+                            description: type of cell value
                             enum:
                             - jsonSchemaType
                             - icon
                             - widget
                             type: string
+                          numberValue:
+                            description: value if type = number or integer
+                            type: integer
                           resourceRefId:
+                            description: used if kind = widget
+                            type: string
+                          stringValue:
+                            description: value if type = string
                             type: string
                           type:
+                            description: used if kind = jsonSchemaType
                             enum:
                             - string
                             - number
                             - integer
+                            - decimal
                             - boolean
                             - array
                             - "null"
                             type: string
-                          value:
+                          valueKey:
+                            description: the key of the column this cell belongs to
                             type: string
                         required:
                         - kind
+                        - valueKey
                         type: object
-                      type: object
+                      type: array
                     type: array
                   pageSize:
                     description: number of rows displayed per page
