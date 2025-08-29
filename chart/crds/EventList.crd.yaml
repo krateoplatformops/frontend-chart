@@ -243,6 +243,9 @@ spec:
                       - type
                       type: object
                     type: array
+                  prefix:
+                    description: filter prefix used to filter data
+                    type: string
                   sseEndpoint:
                     description: endpoint url for server sent events connection
                     type: string
