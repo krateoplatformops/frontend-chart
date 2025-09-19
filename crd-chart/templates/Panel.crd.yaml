@@ -287,6 +287,8 @@ spec:
                                 a toast in case of error
                               type: string
                             headers:
+                              description: 'array of headers as strings, format ''key:
+                                value'''
                               items:
                                 type: string
                               type: array
@@ -370,6 +372,7 @@ spec:
                               - rest
                               type: string
                           required:
+                          - headers
                           - id
                           - resourceRefId
                           - type
