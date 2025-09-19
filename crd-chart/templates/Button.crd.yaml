@@ -230,6 +230,11 @@ spec:
                         description: actions to open modal dialog components
                         items:
                           properties:
+                            customWidth:
+                              description: the custom width of the value, which should
+                                be used by setting the 'custom' value inside the 'size'
+                                property
+                              type: string
                             id:
                               description: unique identifier for the modal action
                               type: string
@@ -247,6 +252,17 @@ spec:
                             resourceRefId:
                               description: the identifier of the k8s custom resource
                                 that should be represented
+                              type: string
+                            size:
+                              description: sets the Modal size, 'default' is 520px,
+                                'large' is 80% of the screen width, 'fullscreen' is
+                                100% of the screen width, 'custom' should be used
+                                with the 'customWidth' property
+                              enum:
+                              - default
+                              - large
+                              - fullscreen
+                              - custom
                               type: string
                             title:
                               description: title shown in the modal header
