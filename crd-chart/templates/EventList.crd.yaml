@@ -40,6 +40,8 @@ spec:
               In CamelCase.
               More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
+          metadata:
+            type: object
           spec:
             properties:
               apiRef:
@@ -67,6 +69,7 @@ spec:
                           type: string
                         payload:
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         resource:
                           type: string
                         slice:
@@ -74,10 +77,13 @@ spec:
                             continue:
                               type: boolean
                             offset:
+                              format: int32
                               type: integer
                             page:
+                              format: int32
                               type: integer
                             perPage:
+                              format: int32
                               type: integer
                           required:
                           - page
@@ -100,10 +106,13 @@ spec:
                       continue:
                         type: boolean
                       offset:
+                        format: int32
                         type: integer
                       page:
+                        format: int32
                         type: integer
                       perPage:
+                        format: int32
                         type: integer
                     required:
                     - page
@@ -155,12 +164,15 @@ spec:
                           type: string
                         count:
                           description: number of times the event has occurred
+                          format: int32
                           type: integer
                         eventTime:
                           description: specific timestamp of the event
+                          format: date-time
                           type: string
                         firstTimestamp:
                           description: timestamp of the first occurrence of the event
+                          format: date-time
                           type: string
                         icon:
                           description: 'name of the icon associated with the event
@@ -190,8 +202,10 @@ spec:
                           - namespace
                           - uid
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         lastTimestamp:
                           description: timestamp of the last occurrence of the event
+                          format: date-time
                           type: string
                         message:
                           description: descriptive message of the event
@@ -202,6 +216,7 @@ spec:
                           properties:
                             creationTimestamp:
                               description: creation date and time of the event
+                              format: date-time
                               type: string
                             name:
                               description: unique name of the event
@@ -218,6 +233,7 @@ spec:
                           - namespace
                           - uid
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         reason:
                           description: reason or cause of the event
                           type: string
@@ -239,6 +255,7 @@ spec:
                               description: host where the event originated
                               type: string
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type:
                           description: type of the event, e.g., normal or warning
                           enum:
@@ -253,6 +270,7 @@ spec:
                       - source
                       - type
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                     type: array
                   prefix:
                     description: filter prefix used to filter data
@@ -266,6 +284,7 @@ spec:
                 required:
                 - events
                 type: object
+                x-kubernetes-preserve-unknown-fields: true
               widgetDataTemplate:
                 items:
                   properties:
@@ -278,6 +297,7 @@ spec:
             required:
             - widgetData
             type: object
+            x-kubernetes-preserve-unknown-fields: true
           status:
             type: object
             x-kubernetes-preserve-unknown-fields: true

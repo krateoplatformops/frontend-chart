@@ -40,6 +40,8 @@ spec:
               In CamelCase.
               More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
+          metadata:
+            type: object
           spec:
             properties:
               apiRef:
@@ -74,10 +76,13 @@ spec:
                             continue:
                               type: boolean
                             offset:
+                              format: int32
                               type: integer
                             page:
+                              format: int32
                               type: integer
                             perPage:
+                              format: int32
                               type: integer
                           required:
                           - page
@@ -100,10 +105,13 @@ spec:
                       continue:
                         type: boolean
                       offset:
+                        format: int32
                         type: integer
                       page:
+                        format: int32
                         type: integer
                       perPage:
+                        format: int32
                         type: integer
                     required:
                     - page
@@ -129,7 +137,6 @@ spec:
                           type: string
                         payload:
                           type: object
-                          x-kubernetes-preserve-unknown-fields: true
                         resource:
                           type: string
                         verb:
@@ -162,6 +169,7 @@ spec:
                               required:
                               - display
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             path:
                               description: the identifier of the route to navigate
                                 to
@@ -177,12 +185,17 @@ spec:
                             type:
                               description: type of navigation action
                               enum:
-                              - navigate
+                              - default
+                              - text
+                              - link
+                              - primary
+                              - dashed
                               type: string
                           required:
                           - id
                           - type
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                       openDrawer:
                         description: actions to open side drawer components
@@ -198,6 +211,7 @@ spec:
                               required:
                               - display
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -209,7 +223,8 @@ spec:
                             size:
                               description: drawer size to be displayed
                               enum:
-                              - default
+                              - small
+                              - middle
                               - large
                               type: string
                             title:
@@ -218,13 +233,18 @@ spec:
                             type:
                               description: type of drawer action
                               enum:
-                              - openDrawer
+                              - default
+                              - text
+                              - link
+                              - primary
+                              - dashed
                               type: string
                           required:
                           - id
                           - resourceRefId
                           - type
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                       openModal:
                         description: actions to open modal dialog components
@@ -245,6 +265,7 @@ spec:
                               required:
                               - display
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -259,10 +280,9 @@ spec:
                                 100% of the screen width, 'custom' should be used
                                 with the 'customWidth' property
                               enum:
-                              - default
+                              - small
+                              - middle
                               - large
-                              - fullscreen
-                              - custom
                               type: string
                             title:
                               description: title shown in the modal header
@@ -270,13 +290,18 @@ spec:
                             type:
                               description: type of modal action
                               enum:
-                              - openModal
+                              - default
+                              - text
+                              - link
+                              - primary
+                              - dashed
                               type: string
                           required:
                           - id
                           - resourceRefId
                           - type
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                       rest:
                         description: rest api call actions triggered by the widget
@@ -302,6 +327,7 @@ spec:
                               required:
                               - display
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             onEventNavigateTo:
                               description: conditional navigation triggered by a specific
                                 event
@@ -319,6 +345,7 @@ spec:
                                   default: 50
                                   description: the timeout in seconds to wait for
                                     the event
+                                  format: int32
                                   type: integer
                                 url:
                                   description: url to navigate to when the event is
@@ -328,13 +355,13 @@ spec:
                               - eventReason
                               - url
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             onSuccessNavigateTo:
                               description: url to navigate to after successful execution
                               type: string
                             payload:
                               description: static payload sent with the request
                               type: object
-                              x-kubernetes-preserve-unknown-fields: true
                             payloadKey:
                               description: key used to nest the payload in the request
                                 body
@@ -353,6 +380,7 @@ spec:
                                 - name
                                 - value
                                 type: object
+                                x-kubernetes-preserve-unknown-fields: true
                               type: array
                             requireConfirmation:
                               description: whether user confirmation is required before
@@ -369,7 +397,11 @@ spec:
                             type:
                               description: type of action to execute
                               enum:
-                              - rest
+                              - default
+                              - text
+                              - link
+                              - primary
+                              - dashed
                               type: string
                           required:
                           - headers
@@ -377,8 +409,10 @@ spec:
                           - resourceRefId
                           - type
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                     type: object
+                    x-kubernetes-preserve-unknown-fields: true
                   clickActionId:
                     description: the id of the action to be executed when the button
                       is clicked
@@ -437,6 +471,7 @@ spec:
                 - actions
                 - clickActionId
                 type: object
+                x-kubernetes-preserve-unknown-fields: true
               widgetDataTemplate:
                 items:
                   properties:
@@ -449,6 +484,7 @@ spec:
             required:
             - widgetData
             type: object
+            x-kubernetes-preserve-unknown-fields: true
           status:
             type: object
             x-kubernetes-preserve-unknown-fields: true

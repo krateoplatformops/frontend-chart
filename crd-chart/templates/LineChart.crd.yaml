@@ -40,6 +40,8 @@ spec:
               In CamelCase.
               More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
+          metadata:
+            type: object
           spec:
             properties:
               apiRef:
@@ -74,10 +76,13 @@ spec:
                             continue:
                               type: boolean
                             offset:
+                              format: int32
                               type: integer
                             page:
+                              format: int32
                               type: integer
                             perPage:
+                              format: int32
                               type: integer
                           required:
                           - page
@@ -100,10 +105,13 @@ spec:
                       continue:
                         type: boolean
                       offset:
+                        format: int32
                         type: integer
                       page:
+                        format: int32
                         type: integer
                       perPage:
+                        format: int32
                         type: integer
                     required:
                     - page
@@ -129,7 +137,6 @@ spec:
                           type: string
                         payload:
                           type: object
-                          x-kubernetes-preserve-unknown-fields: true
                         resource:
                           type: string
                         verb:
@@ -176,11 +183,13 @@ spec:
                             - xAxis
                             - yAxis
                             type: object
+                            x-kubernetes-preserve-unknown-fields: true
                           type: array
                         name:
                           description: label of the line displayed in the legend
                           type: string
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                     type: array
                   prefix:
                     description: it's the filters prefix to get right values
@@ -194,6 +203,7 @@ spec:
                 required:
                 - lines
                 type: object
+                x-kubernetes-preserve-unknown-fields: true
               widgetDataTemplate:
                 items:
                   properties:
@@ -206,6 +216,7 @@ spec:
             required:
             - widgetData
             type: object
+            x-kubernetes-preserve-unknown-fields: true
           status:
             type: object
             x-kubernetes-preserve-unknown-fields: true

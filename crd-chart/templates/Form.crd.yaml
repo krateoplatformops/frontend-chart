@@ -40,6 +40,8 @@ spec:
               In CamelCase.
               More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
+          metadata:
+            type: object
           spec:
             properties:
               apiRef:
@@ -74,10 +76,13 @@ spec:
                             continue:
                               type: boolean
                             offset:
+                              format: int32
                               type: integer
                             page:
+                              format: int32
                               type: integer
                             perPage:
+                              format: int32
                               type: integer
                           required:
                           - page
@@ -100,10 +105,13 @@ spec:
                       continue:
                         type: boolean
                       offset:
+                        format: int32
                         type: integer
                       page:
+                        format: int32
                         type: integer
                       perPage:
+                        format: int32
                         type: integer
                     required:
                     - page
@@ -129,7 +137,6 @@ spec:
                           type: string
                         payload:
                           type: object
-                          x-kubernetes-preserve-unknown-fields: true
                         resource:
                           type: string
                         verb:
@@ -163,6 +170,7 @@ spec:
                               required:
                               - display
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             path:
                               description: the identifier of the route to navigate
                                 to
@@ -178,12 +186,13 @@ spec:
                             type:
                               description: type of navigation action
                               enum:
-                              - navigate
+                              - rest
                               type: string
                           required:
                           - id
                           - type
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                       openDrawer:
                         description: actions to open side drawer components
@@ -199,6 +208,7 @@ spec:
                               required:
                               - display
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -219,13 +229,14 @@ spec:
                             type:
                               description: type of drawer action
                               enum:
-                              - openDrawer
+                              - rest
                               type: string
                           required:
                           - id
                           - resourceRefId
                           - type
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                       openModal:
                         description: actions to open modal dialog components
@@ -246,6 +257,7 @@ spec:
                               required:
                               - display
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             requireConfirmation:
                               description: whether user confirmation is required before
                                 opening
@@ -262,8 +274,6 @@ spec:
                               enum:
                               - default
                               - large
-                              - fullscreen
-                              - custom
                               type: string
                             title:
                               description: title shown in the modal header
@@ -271,13 +281,14 @@ spec:
                             type:
                               description: type of modal action
                               enum:
-                              - openModal
+                              - rest
                               type: string
                           required:
                           - id
                           - resourceRefId
                           - type
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                       rest:
                         description: rest api call actions triggered by the widget
@@ -303,6 +314,7 @@ spec:
                               required:
                               - display
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             onEventNavigateTo:
                               description: conditional navigation triggered by a specific
                                 event
@@ -320,6 +332,7 @@ spec:
                                   default: 50
                                   description: the timeout in seconds to wait for
                                     the event
+                                  format: int32
                                   type: integer
                                 url:
                                   description: url to navigate to when the event is
@@ -329,13 +342,13 @@ spec:
                               - eventReason
                               - url
                               type: object
+                              x-kubernetes-preserve-unknown-fields: true
                             onSuccessNavigateTo:
                               description: url to navigate to after successful execution
                               type: string
                             payload:
                               description: static payload sent with the request
                               type: object
-                              x-kubernetes-preserve-unknown-fields: true
                             payloadKey:
                               description: key used to nest the payload in the request
                                 body
@@ -354,6 +367,7 @@ spec:
                                 - name
                                 - value
                                 type: object
+                                x-kubernetes-preserve-unknown-fields: true
                               type: array
                             requireConfirmation:
                               description: whether user confirmation is required before
@@ -378,35 +392,40 @@ spec:
                           - resourceRefId
                           - type
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                     type: object
+                    x-kubernetes-preserve-unknown-fields: true
                   autocomplete:
-                    description: autocomplete configuration for the form fields
+                    description: Configuration for the Autocomplete form fields. The
+                      field options could be configured using enum values coming from
+                      the schema or via an API call made using a RESTAction which
+                      sould be defined below. The RESTActions shuold contain a `status`
+                      field, which is an array of object with the `{ label, value
+                      }` format.
                     items:
                       properties:
-                        fetch:
-                          description: remote data source configuration for autocomplete
+                        extra:
+                          description: parameter to be added to the RESTAction call
                           properties:
-                            url:
-                              description: the URL to fetch autocomplete options from
-                              type: string
-                            verb:
-                              description: HTTP method to use for fetching options
-                              enum:
-                              - GET
-                              - POST
+                            key:
+                              description: the key of the additional parameter
                               type: string
                           required:
-                          - url
-                          - verb
+                          - key
                           type: object
-                        path:
-                          description: the path of the field to apply autocomplete
+                          x-kubernetes-preserve-unknown-fields: true
+                        name:
+                          description: the name of the autocomplete field
+                          type: string
+                        resourceRefId:
+                          description: the identifier of the RESTAction that should
+                            be called to retrieve autocomplete data
                           type: string
                       required:
-                      - fetch
-                      - path
+                      - name
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                     type: array
                   buttonConfig:
                     description: custom labels and icons for form buttons
@@ -421,6 +440,7 @@ spec:
                             description: text label for primary button
                             type: string
                         type: object
+                        x-kubernetes-preserve-unknown-fields: true
                       secondary:
                         description: secondary button configuration
                         properties:
@@ -431,40 +451,52 @@ spec:
                             description: text label for secondary button
                             type: string
                         type: object
+                        x-kubernetes-preserve-unknown-fields: true
                     type: object
+                    x-kubernetes-preserve-unknown-fields: true
                   dependencies:
-                    description: list of dependencies for the form fields
+                    description: Configuration for the form fields who are dependent
+                      from other form fields. The field options are set via an API
+                      call made using a RESTAction which sould be defined below. The
+                      RESTActions shuold contain a `status` field, which is an array
+                      of object with the `{ label, value }` format.
                     items:
                       properties:
-                        dependsField:
+                        dependsOn:
+                          description: the field on which this field depends on
                           properties:
-                            field:
-                              description: the field that this field depends on
-                              type: string
-                          type: object
-                        fetch:
-                          properties:
-                            url:
-                              description: the URL to fetch options
-                              type: string
-                            verb:
-                              description: HTTP method to use for fetching options
-                              enum:
-                              - GET
-                              - POST
+                            name:
+                              description: the name of the field on which this field
+                                depends on
                               type: string
                           required:
-                          - url
-                          - verb
+                          - name
                           type: object
-                        path:
-                          description: the path of the field
+                          x-kubernetes-preserve-unknown-fields: true
+                        extra:
+                          description: parameter to be added to the RESTAction call
+                          properties:
+                            key:
+                              description: the key of the additional parameter
+                              type: string
+                          required:
+                          - key
+                          type: object
+                          x-kubernetes-preserve-unknown-fields: true
+                        name:
+                          description: the name of the autocomplete field
+                          type: string
+                        resourceRefId:
+                          description: the identifier of the RESTAction that should
+                            be called to retrieve dependency data
                           type: string
                       required:
-                      - dependsField
-                      - fetch
-                      - path
+                      - dependsOn
+                      - extra
+                      - name
+                      - resourceRefId
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                     type: array
                   fieldDescription:
                     default: inline
@@ -486,6 +518,7 @@ spec:
                       - displayField
                       - path
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                     type: array
                   schema:
                     description: the schema of the form as an object
@@ -502,6 +535,7 @@ spec:
                 - actions
                 - submitActionId
                 type: object
+                x-kubernetes-preserve-unknown-fields: true
               widgetDataTemplate:
                 items:
                   properties:
@@ -514,6 +548,7 @@ spec:
             required:
             - widgetData
             type: object
+            x-kubernetes-preserve-unknown-fields: true
           status:
             type: object
             x-kubernetes-preserve-unknown-fields: true

@@ -40,6 +40,8 @@ spec:
               In CamelCase.
               More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
+          metadata:
+            type: object
           spec:
             properties:
               apiRef:
@@ -74,10 +76,13 @@ spec:
                             continue:
                               type: boolean
                             offset:
+                              format: int32
                               type: integer
                             page:
+                              format: int32
                               type: integer
                             perPage:
+                              format: int32
                               type: integer
                           required:
                           - page
@@ -100,10 +105,13 @@ spec:
                       continue:
                         type: boolean
                       offset:
+                        format: int32
                         type: integer
                       page:
+                        format: int32
                         type: integer
                       perPage:
+                        format: int32
                         type: integer
                     required:
                     - page
@@ -129,7 +137,6 @@ spec:
                           type: string
                         payload:
                           type: object
-                          x-kubernetes-preserve-unknown-fields: true
                         resource:
                           type: string
                         verb:
@@ -171,27 +178,32 @@ spec:
                               type: string
                             value:
                               description: numeric value for the segment
+                              format: int32
                               type: integer
                           required:
                           - color
                           - label
                           - value
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         type: array
                       total:
                         description: sum of all data values, used to calculate segment
                           sizes
+                        format: int32
                         type: integer
                     required:
                     - data
                     - total
                     type: object
+                    x-kubernetes-preserve-unknown-fields: true
                   title:
                     description: title displayed above the chart
                     type: string
                 required:
                 - title
                 type: object
+                x-kubernetes-preserve-unknown-fields: true
               widgetDataTemplate:
                 items:
                   properties:
@@ -204,6 +216,7 @@ spec:
             required:
             - widgetData
             type: object
+            x-kubernetes-preserve-unknown-fields: true
           status:
             type: object
             x-kubernetes-preserve-unknown-fields: true

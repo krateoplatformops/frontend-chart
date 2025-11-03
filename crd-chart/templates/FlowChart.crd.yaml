@@ -40,6 +40,8 @@ spec:
               In CamelCase.
               More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
+          metadata:
+            type: object
           spec:
             properties:
               apiRef:
@@ -74,10 +76,13 @@ spec:
                             continue:
                               type: boolean
                             offset:
+                              format: int32
                               type: integer
                             page:
+                              format: int32
                               type: integer
                             perPage:
+                              format: int32
                               type: integer
                           required:
                           - page
@@ -100,10 +105,13 @@ spec:
                       continue:
                         type: boolean
                       offset:
+                        format: int32
                         type: integer
                       page:
+                        format: int32
                         type: integer
                       perPage:
+                        format: int32
                         type: integer
                     required:
                     - page
@@ -129,7 +137,6 @@ spec:
                           type: string
                         payload:
                           type: object
-                          x-kubernetes-preserve-unknown-fields: true
                         resource:
                           type: string
                         verb:
@@ -169,12 +176,13 @@ spec:
                               - violet
                               type: string
                             message:
-                              description: optional tooltip message displayed on hover
+                              description: optional tooltip message
                               type: string
                             name:
-                              description: FontAwesome icon class name (e.g. 'fa-check')
+                              description: FontAwesome icon class name
                               type: string
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         kind:
                           description: kubernetes resource type (e.g. Deployment,
                             Service)
@@ -215,6 +223,7 @@ spec:
                                     description: FontAwesome icon class name
                                     type: string
                                 type: object
+                                x-kubernetes-preserve-unknown-fields: true
                               kind:
                                 description: resource type of the parent
                                 type: string
@@ -227,8 +236,7 @@ spec:
                               parentRefs:
                                 description: nested parent references for recursive
                                   relationships
-                                items:
-                                  type: object
+                                items: {}
                                 type: array
                               resourceVersion:
                                 description: internal version string of the parent
@@ -256,6 +264,7 @@ spec:
                                     description: FontAwesome icon class name
                                     type: string
                                 type: object
+                                x-kubernetes-preserve-unknown-fields: true
                               uid:
                                 description: unique identifier of the parent resource
                                 type: string
@@ -283,14 +292,13 @@ spec:
                               - violet
                               type: string
                             message:
-                              description: optional tooltip message describing the
-                                status
+                              description: optional tooltip message
                               type: string
                             name:
-                              description: FontAwesome icon class name representing
-                                status
+                              description: FontAwesome icon class name
                               type: string
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         uid:
                           description: unique identifier of the resource
                           type: string
@@ -306,8 +314,10 @@ spec:
                       - uid
                       - version
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                     type: array
                 type: object
+                x-kubernetes-preserve-unknown-fields: true
               widgetDataTemplate:
                 items:
                   properties:
@@ -320,6 +330,7 @@ spec:
             required:
             - widgetData
             type: object
+            x-kubernetes-preserve-unknown-fields: true
           status:
             type: object
             x-kubernetes-preserve-unknown-fields: true
