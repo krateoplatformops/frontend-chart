@@ -381,31 +381,32 @@ spec:
                         type: array
                     type: object
                   autocomplete:
-                    description: autocomplete configuration for the form fields
+                    description: Configuration for the Autocomplete form fields. The
+                      field options could be configured using enum values coming from
+                      the schema or via an API call made using a RESTAction which
+                      sould be defined below. The RESTActions shuold contain a `status`
+                      field, which is an array of object with the `{ label, value
+                      }` format.
                     items:
                       properties:
-                        fetch:
-                          description: remote data source configuration for autocomplete
+                        extra:
+                          description: parameter to be added to the RESTAction call
                           properties:
-                            url:
-                              description: the URL to fetch autocomplete options from
-                              type: string
-                            verb:
-                              description: HTTP method to use for fetching options
-                              enum:
-                              - GET
-                              - POST
+                            key:
+                              description: the key of the additional parameter
                               type: string
                           required:
-                          - url
-                          - verb
+                          - key
                           type: object
-                        path:
-                          description: the path of the field to apply autocomplete
+                        name:
+                          description: the name of the autocomplete field
+                          type: string
+                        resourceRefId:
+                          description: the identifier of the RESTAction that should
+                            be called to retrieve autocomplete data
                           type: string
                       required:
-                      - fetch
-                      - path
+                      - name
                       type: object
                     type: array
                   buttonConfig:
@@ -433,37 +434,44 @@ spec:
                         type: object
                     type: object
                   dependencies:
-                    description: list of dependencies for the form fields
+                    description: Configuration for the form fields who are dependent
+                      from other form fields. The field options are set via an API
+                      call made using a RESTAction which sould be defined below. The
+                      RESTActions shuold contain a `status` field, which is an array
+                      of object with the `{ label, value }` format.
                     items:
                       properties:
-                        dependsField:
+                        dependsOn:
+                          description: the field on which this field depends on
                           properties:
-                            field:
-                              description: the field that this field depends on
-                              type: string
-                          type: object
-                        fetch:
-                          properties:
-                            url:
-                              description: the URL to fetch options
-                              type: string
-                            verb:
-                              description: HTTP method to use for fetching options
-                              enum:
-                              - GET
-                              - POST
+                            name:
+                              description: the name of the field on which this field
+                                depends on
                               type: string
                           required:
-                          - url
-                          - verb
+                          - name
                           type: object
-                        path:
-                          description: the path of the field
+                        extra:
+                          description: parameter to be added to the RESTAction call
+                          properties:
+                            key:
+                              description: the key of the additional parameter
+                              type: string
+                          required:
+                          - key
+                          type: object
+                        name:
+                          description: the name of the autocomplete field
+                          type: string
+                        resourceRefId:
+                          description: the identifier of the RESTAction that should
+                            be called to retrieve dependency data
                           type: string
                       required:
-                      - dependsField
-                      - fetch
-                      - path
+                      - dependsOn
+                      - extra
+                      - name
+                      - resourceRefId
                       type: object
                     type: array
                   fieldDescription:
