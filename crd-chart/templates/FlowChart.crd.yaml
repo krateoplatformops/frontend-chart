@@ -40,6 +40,8 @@ spec:
               In CamelCase.
               More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
+          metadata:
+            type: object
           spec:
             properties:
               apiRef:
@@ -67,6 +69,7 @@ spec:
                           type: string
                         payload:
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         resource:
                           type: string
                         slice:
@@ -74,10 +77,13 @@ spec:
                             continue:
                               type: boolean
                             offset:
+                              format: int32
                               type: integer
                             page:
+                              format: int32
                               type: integer
                             perPage:
+                              format: int32
                               type: integer
                           required:
                           - page
@@ -100,10 +106,13 @@ spec:
                       continue:
                         type: boolean
                       offset:
+                        format: int32
                         type: integer
                       page:
+                        format: int32
                         type: integer
                       perPage:
+                        format: int32
                         type: integer
                     required:
                     - page
@@ -169,10 +178,10 @@ spec:
                               - violet
                               type: string
                             message:
-                              description: optional tooltip message displayed on hover
+                              description: optional tooltip message
                               type: string
                             name:
-                              description: FontAwesome icon class name (e.g. 'fa-check')
+                              description: FontAwesome icon class name
                               type: string
                           type: object
                         kind:
@@ -227,8 +236,7 @@ spec:
                               parentRefs:
                                 description: nested parent references for recursive
                                   relationships
-                                items:
-                                  type: object
+                                items: {}
                                 type: array
                               resourceVersion:
                                 description: internal version string of the parent
@@ -283,12 +291,10 @@ spec:
                               - violet
                               type: string
                             message:
-                              description: optional tooltip message describing the
-                                status
+                              description: optional tooltip message
                               type: string
                             name:
-                              description: FontAwesome icon class name representing
-                                status
+                              description: FontAwesome icon class name
                               type: string
                           type: object
                         uid:

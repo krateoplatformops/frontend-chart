@@ -40,6 +40,8 @@ spec:
               In CamelCase.
               More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
+          metadata:
+            type: object
           spec:
             properties:
               apiRef:
@@ -67,6 +69,7 @@ spec:
                           type: string
                         payload:
                           type: object
+                          x-kubernetes-preserve-unknown-fields: true
                         resource:
                           type: string
                         slice:
@@ -74,10 +77,13 @@ spec:
                             continue:
                               type: boolean
                             offset:
+                              format: int32
                               type: integer
                             page:
+                              format: int32
                               type: integer
                             perPage:
+                              format: int32
                               type: integer
                           required:
                           - page
@@ -100,10 +106,13 @@ spec:
                       continue:
                         type: boolean
                       offset:
+                        format: int32
                         type: integer
                       page:
+                        format: int32
                         type: integer
                       perPage:
+                        format: int32
                         type: integer
                     required:
                     - page
@@ -178,7 +187,7 @@ spec:
                             type:
                               description: type of navigation action
                               enum:
-                              - navigate
+                              - openModal
                               type: string
                           required:
                           - id
@@ -212,6 +221,8 @@ spec:
                               enum:
                               - default
                               - large
+                              - fullscreen
+                              - custom
                               type: string
                             title:
                               description: title shown in the drawer header
@@ -219,7 +230,7 @@ spec:
                             type:
                               description: type of drawer action
                               enum:
-                              - openDrawer
+                              - openModal
                               type: string
                           required:
                           - id
@@ -320,6 +331,7 @@ spec:
                                   default: 50
                                   description: the timeout in seconds to wait for
                                     the event
+                                  format: int32
                                   type: integer
                                 url:
                                   description: url to navigate to when the event is
@@ -370,7 +382,7 @@ spec:
                             type:
                               description: type of action to execute
                               enum:
-                              - rest
+                              - openModal
                               type: string
                           required:
                           - headers
