@@ -486,6 +486,8 @@ spec:
                     type: array
                   fieldDescription:
                     default: inline
+                    description: the displaying mode of the field description, default
+                      is inline but it could also be displayed as a tooltip
                     enum:
                     - tooltip
                     - inline
