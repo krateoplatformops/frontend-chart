@@ -346,8 +346,8 @@ spec:
                               type: object
                               x-kubernetes-preserve-unknown-fields: true
                             payloadKey:
-                              description: key used to nest the payload in the request
-                                body
+                              description: '***DEPRECATED*** key used to nest the
+                                payload in the request body'
                               type: string
                             payloadToOverride:
                               description: list of payload fields to override dynamically
