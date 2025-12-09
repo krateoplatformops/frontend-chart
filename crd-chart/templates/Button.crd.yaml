@@ -389,12 +389,23 @@ spec:
                           type: object
                         type: array
                     type: object
+                  backgroundColor:
+                    description: the background color of the button
+                    enum:
+                    - blue
+                    - darkBlue
+                    - orange
+                    - gray
+                    - red
+                    - green
+                    - violet
+                    type: string
                   clickActionId:
                     description: the id of the action to be executed when the button
                       is clicked
                     type: string
                   color:
-                    description: the color of the button
+                    description: '***DEPRECATED*** the color of the button'
                     enum:
                     - default
                     - primary

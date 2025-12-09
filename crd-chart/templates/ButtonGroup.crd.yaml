@@ -4,17 +4,17 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-  name: inlinegroups.widgets.templates.krateo.io
+  name: buttongroups.widgets.templates.krateo.io
 spec:
   group: widgets.templates.krateo.io
   names:
     categories:
     - widgets
     - krateo
-    kind: InlineGroup
-    listKind: InlineGroupList
-    plural: inlinegroups
-    singular: inlinegroup
+    kind: ButtonGroup
+    listKind: ButtonGroupList
+    plural: buttongroups
+    singular: buttongroup
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
@@ -156,7 +156,7 @@ spec:
                 description: the data that will be passed to the widget on the frontend
                 properties:
                   alignment:
-                    description: the alignment of the element inside the InlineGroup.
+                    description: the alignment of the element inside the ButtonGroup.
                       Default is 'left'
                     enum:
                     - center
@@ -185,7 +185,7 @@ spec:
                       type: string
                     type: array
                   gap:
-                    description: the spacing between the items of the InlineGroup.
+                    description: the spacing between the items of the ButtonGroup.
                       Default is 'small'
                     enum:
                     - extra-small
@@ -194,7 +194,7 @@ spec:
                     - large
                     type: string
                   items:
-                    description: the items of the InlineGroup
+                    description: the items of the ButtonGroup
                     items:
                       properties:
                         resourceRefId:
