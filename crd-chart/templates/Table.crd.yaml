@@ -161,6 +161,7 @@ spec:
                       enum:
                       - barcharts
                       - buttons
+                      - buttongroups
                       - filters
                       - flowcharts
                       - linecharts
@@ -184,6 +185,7 @@ spec:
                           - gray
                           - red
                           - green
+                          - violet
                           type: string
                         title:
                           description: column header label

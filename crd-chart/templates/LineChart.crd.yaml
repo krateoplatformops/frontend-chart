@@ -170,6 +170,7 @@ spec:
                           - gray
                           - red
                           - green
+                          - violet
                           type: string
                         coords:
                           description: data points that define the line
@@ -191,9 +192,6 @@ spec:
                           type: string
                       type: object
                     type: array
-                  prefix:
-                    description: it's the filters prefix to get right values
-                    type: string
                   xAxisName:
                     description: label for the x axis
                     type: string

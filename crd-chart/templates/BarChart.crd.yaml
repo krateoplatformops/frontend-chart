@@ -172,6 +172,7 @@ spec:
                                 - gray
                                 - red
                                 - green
+                                - violet
                                 type: string
                               percentage:
                                 description: Height of the bar as a percentage (0–100)
