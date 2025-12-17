@@ -492,6 +492,12 @@ spec:
                     - tooltip
                     - inline
                     type: string
+                  initialValues:
+                    description: optional object with initial values for form fields.
+                      Keys should match form field names (supports nested objects).
+                      These values override schema defaults.
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
                   objectFields:
                     description: configuration for object fields in the form
                     items:
