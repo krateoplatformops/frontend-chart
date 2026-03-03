@@ -184,6 +184,11 @@ spec:
                               description: the identifier of the k8s custom resource
                                 that should be represented
                               type: string
+                            resourceURLPathExtension:
+                              description: optional additional string URL path appended
+                                to the current URL when navigating to a resource via
+                                resourceRefId
+                              type: string
                             type:
                               description: type of navigation action
                               enum:
@@ -484,6 +489,11 @@ spec:
                       - resourceRefId
                       type: object
                     type: array
+                  displayMenu:
+                    description: Displays a side menu with clickable anchor links
+                      for each field, allowing users to scroll to the selected field.
+                      If not specified, the menu is displayed by default.
+                    type: boolean
                   fieldDescription:
                     default: inline
                     description: the displaying mode of the field description, default
