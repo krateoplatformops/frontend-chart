@@ -4,17 +4,17 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-  name: eventlists.widgets.templates.krateo.io
+  name: themes.widgets.templates.krateo.io
 spec:
   group: widgets.templates.krateo.io
   names:
     categories:
     - widgets
     - krateo
-    kind: EventList
-    listKind: EventListList
-    plural: eventlists
-    singular: eventlist
+    kind: Theme
+    listKind: ThemeList
+    plural: themes
+    singular: theme
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
@@ -153,70 +153,35 @@ spec:
                   type: object
                 type: array
               widgetData:
+                description: the data that will be passed to the widget on the frontend
                 properties:
-                  events:
-                    description: list of events received from a k8s cluster or server
-                      sent event
-                    items:
-                      properties:
-                        cluster_name:
-                          description: name of the cluster
-                          type: string
-                        created_at:
-                          description: creation date and time of the event
-                          format: date-time
-                          type: string
-                        event_type:
-                          description: type of the event, e.g., normal or warning
-                          enum:
-                          - Normal
-                          - Warning
-                          type: string
-                        global_uid:
-                          description: unique identifier of the event
-                          type: string
-                        message:
-                          description: descriptive message of the event
-                          type: string
-                        namespace:
-                          description: namespace the event belongs to
-                          type: string
-                        raw:
-                          description: raw content of the event
-                          type: string
-                        reason:
-                          description: reason or cause of the event
-                          type: string
-                        resource_kind:
-                          description: resource type involved
-                          type: string
-                        resource_name:
-                          description: unique name of the resource
-                          type: string
-                      required:
-                      - cluster_name
-                      - created_at
-                      - event_type
-                      - global_uid
-                      - message
-                      - namespace
-                      - raw
-                      - reason
-                      - resource_kind
-                      - resource_name
-                      type: object
-                    type: array
-                  prefix:
-                    description: filter prefix used to filter data
+                  custom:
+                    description: Defines customization for specific components / widgets
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+                  logo:
+                    description: Defines the application logo as SVG string or URL
+                    properties:
+                      svg:
+                        description: The logo as SVG
+                        type: string
+                      url:
+                        description: The logo resource URL
+                        type: string
+                    type: object
+                  mode:
+                    default: light
+                    description: The mode on which the theme is based (dark or light)
+                    enum:
+                    - dark
+                    - light
                     type: string
-                  sseEndpoint:
-                    description: endpoint url for server sent events connection
-                    type: string
-                  sseTopic:
-                    description: subscription topic for server sent events
-                    type: string
+                  token:
+                    description: Defines customization for specific style tokens
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
                 required:
-                - events
+                - mode
                 type: object
               widgetDataTemplate:
                 items:
@@ -228,6 +193,7 @@ spec:
                   type: object
                 type: array
             required:
+            - resourcesRefs
             - widgetData
             type: object
           status:
