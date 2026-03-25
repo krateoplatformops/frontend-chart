@@ -86,6 +86,7 @@ spec:
                               format: int32
                               type: integer
                           required:
+                          - page
                           - perPage
                           type: object
                         verb:
@@ -114,6 +115,7 @@ spec:
                         format: int32
                         type: integer
                     required:
+                    - page
                     - perPage
                     type: object
                 required:
@@ -173,6 +175,10 @@ spec:
                         global_uid:
                           description: unique identifier of the event
                           type: string
+                        involved_object_uid:
+                          description: unique identifier of a resource associated
+                            to the event
+                          type: string
                         message:
                           description: descriptive message of the event
                           type: string
@@ -196,6 +202,7 @@ spec:
                       - created_at
                       - event_type
                       - global_uid
+                      - involved_object_uid
                       - message
                       - namespace
                       - raw

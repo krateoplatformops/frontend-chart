@@ -86,6 +86,7 @@ spec:
                               format: int32
                               type: integer
                           required:
+                          - page
                           - perPage
                           type: object
                         verb:
@@ -114,6 +115,7 @@ spec:
                         format: int32
                         type: integer
                     required:
+                    - page
                     - perPage
                     type: object
                 required:
