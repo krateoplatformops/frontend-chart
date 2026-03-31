@@ -160,6 +160,9 @@ spec:
                         cluster_name:
                           description: name of the cluster
                           type: string
+                        composition_id:
+                          description: unique identifier of the composition
+                          type: string
                         created_at:
                           description: creation date and time of the event
                           format: date-time
@@ -200,7 +203,6 @@ spec:
                       - created_at
                       - event_type
                       - global_uid
-                      - involved_object_uid
                       - message
                       - namespace
                       - raw
