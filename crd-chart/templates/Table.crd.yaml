@@ -557,6 +557,14 @@ spec:
                           type: string
                       type: object
                     type: array
+                  tableActionsColumn:
+                    description: customization for the table actions column
+                    properties:
+                      label:
+                        description: table actions column customized label, default
+                          is empty string
+                        type: string
+                    type: object
                 required:
                 - allowedResources
                 - columns
