@@ -325,6 +325,16 @@ spec:
                                   description: message to display while waiting for
                                     the event
                                   type: string
+                                mode:
+                                  default: navigate
+                                  description: 'navigate (default): closes drawer
+                                    and redirects on event. notification: closes drawer
+                                    immediately, shows a persistent notification with
+                                    loader until event is received'
+                                  enum:
+                                  - navigate
+                                  - notification
+                                  type: string
                                 reloadRoutes:
                                   type: boolean
                                 timeout:

@@ -326,6 +326,16 @@ spec:
                                   description: message to display while waiting for
                                     the event
                                   type: string
+                                mode:
+                                  default: navigate
+                                  description: 'navigate (default): closes drawer
+                                    and redirects on event. notification: closes drawer
+                                    immediately, shows a persistent notification with
+                                    loader until event is received'
+                                  enum:
+                                  - navigate
+                                  - notification
+                                  type: string
                                 reloadRoutes:
                                   type: boolean
                                 timeout:
@@ -492,6 +502,76 @@ spec:
                       for each field, allowing users to scroll to the selected field.
                       If not specified, the menu is displayed by default.
                     type: boolean
+                  displayingDependencies:
+                    description: Configuration for the form fields whose displaying
+                      is dependent from other form fields.
+                    items:
+                      properties:
+                        dependsOn:
+                          description: the field on which this field depends on
+                          properties:
+                            conditionType:
+                              description: '`notEmpty` (default) indicates that the
+                                current field is displayed if the dependency field
+                                has a non-empty value. `value` indicates that the
+                                current field is displayed only when the dependency
+                                field matches a specific value.'
+                              enum:
+                              - notEmpty
+                              - value
+                              type: string
+                            name:
+                              description: the name of the field on which this field
+                                depends on
+                              type: string
+                            value:
+                              description: Expected value used when `type = value`.
+                              properties:
+                                arrayValue:
+                                  description: Value if type = array
+                                  items:
+                                    type: string
+                                  type: array
+                                booleanValue:
+                                  description: Value if type = boolean
+                                  type: boolean
+                                integerValue:
+                                  description: Value if type = integer
+                                  format: int32
+                                  type: integer
+                                optionValue:
+                                  description: 'Value if type = option: includes a
+                                    single value or a { label, value } object'
+                                  type: object
+                                  x-kubernetes-preserve-unknown-fields: true
+                                stringValue:
+                                  description: Value if type = string
+                                  type: string
+                                type:
+                                  description: Expected dependency value type.
+                                  enum:
+                                  - string
+                                  - integer
+                                  - boolean
+                                  - array
+                                  - option
+                                  - "null"
+                                  type: string
+                              required:
+                              - type
+                              type: object
+                          required:
+                          - conditionType
+                          - name
+                          type: object
+                        name:
+                          description: the name of the field
+                          type: string
+                      required:
+                      - dependsOn
+                      - name
+                      type: object
+                    type: array
                   fieldDescription:
                     default: inline
                     description: the displaying mode of the field description, default
