@@ -156,6 +156,49 @@ spec:
                   actions:
                     description: the actions of the widget
                     properties:
+                      externalNavigate:
+                        description: actions to navigate to an external URL
+                        items:
+                          properties:
+                            id:
+                              description: unique identifier for the action
+                              type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
+                            requireConfirmation:
+                              description: whether user confirmation is required before
+                                navigating
+                              type: boolean
+                            target:
+                              default: _blank
+                              description: 'specifies where to open the URL (default:
+                                _blank)'
+                              enum:
+                              - _blank
+                              - _self
+                              - _parent
+                              - _top
+                              type: string
+                            type:
+                              description: type of action to execute
+                              enum:
+                              - externalNavigate
+                              type: string
+                            url:
+                              description: the external URL to navigate to; supports
+                                JQ expressions using ${ } syntax
+                              type: string
+                          required:
+                          - id
+                          - type
+                          - url
+                          type: object
+                        type: array
                       navigate:
                         description: client-side navigation actions
                         items:
@@ -288,6 +331,48 @@ spec:
                           required:
                           - id
                           - resourceRefId
+                          - type
+                          type: object
+                        type: array
+                      refresh:
+                        description: actions to invalidate and reload cached data
+                        items:
+                          properties:
+                            id:
+                              description: unique identifier for the action
+                              type: string
+                            loading:
+                              properties:
+                                display:
+                                  type: boolean
+                              required:
+                              - display
+                              type: object
+                            requireConfirmation:
+                              description: whether user confirmation is required before
+                                refreshing
+                              type: boolean
+                            resourcesRefsIds:
+                              description: list of resourcesRefs item IDs whose widget
+                                queries should be invalidated; each ID must match
+                                an entry in resourcesRefs.items
+                              items:
+                                type: string
+                              type: array
+                            type:
+                              description: type of action to execute
+                              enum:
+                              - refresh
+                              type: string
+                            widgetKinds:
+                              description: list of widget kind names (e.g. Table,
+                                Panel) whose queries should be invalidated; all widgets
+                                of those kinds on the page are re-fetched
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - id
                           - type
                           type: object
                         type: array
