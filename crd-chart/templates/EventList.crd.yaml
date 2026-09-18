@@ -168,10 +168,8 @@ spec:
                           format: date-time
                           type: string
                         event_type:
-                          description: type of the event, e.g., normal or warning
-                          enum:
-                          - Normal
-                          - Warning
+                          description: type of the event, e.g., Normal, Warning, or
+                            Error
                           type: string
                         global_uid:
                           description: unique identifier of the event
