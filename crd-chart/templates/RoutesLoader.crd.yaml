@@ -160,6 +160,24 @@ spec:
                       - routes
                       type: string
                     type: array
+                  routes:
+                    description: routes registered directly, each opening the resourcesRefs
+                      item with the same id; resourcesRefs items not listed here are
+                      loaded as Route widgets
+                    items:
+                      properties:
+                        id:
+                          description: the id of the resourcesRefs item this route
+                            opens
+                          type: string
+                        path:
+                          description: the url path that loads the resource
+                          type: string
+                      required:
+                      - id
+                      - path
+                      type: object
+                    type: array
                 required:
                 - allowedResources
                 type: object
